@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.djava.mybatis.dao.MybatisDao">
+	
+	<select id="listDao" resultType="com.djava.mybatis.dto.MybatisDto">
+		SELECT * FROM freeboard ORDER BY fbnum DESC  <!-- 세미콜론 x -->	
+	</select>
+
+	<insert id="writeDao">
+		INSERT INTO freeboard(fbnum,fbname,fbtitle,fbcontent,fbhit) VALUES(FREEBOARD_SEQ.nextval, #{param1}, #{param2}, #{param3}, 0)
+	</insert>
+	
+	
+	<select id="contentDao" resultType="com.djava.mybatis.dto.MybatisDto">
+		SELECT * FROM freeboard WHERE fbnum = #{param1}
+	</select>
+	
+	<update id="modifyDao">
+		UPDATE freeboard SET fbtitle=#{param1}, fbname=#{param2}, fbcontent=#{param3} WHERE fbnum=#{param4}	
+	</update>
+	
+	<select id="searchListDao" resultType="com.djava.mybatis.dto.MybatisDto">
+		SELECT * FROM freeboard WHERE fbtitle LIKE '%' || #{param1} || '%' OR fbcontent LIKE '%' || #{param1} || '%' ORDER BY fbnum DESC
+	</select>
+	
+	<delete id="deleteDao">
+		DELETE FROM freeboard WHERE fbnum=#{param1}
+	</delete>
+	
+</mapper>

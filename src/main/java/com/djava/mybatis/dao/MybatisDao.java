@@ -20,5 +20,6 @@ public interface MybatisDao {
 	 // 반환 타입 arraylist 여러개 or x 위에 mybatisdto 1개
 	public void deleteDao(String fbnum); // 글삭제
 	
+	public void uphitDao(String fbnum); // 게시판 글 조회수 증가
 	
 }	 

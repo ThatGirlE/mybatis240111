@@ -69,6 +69,8 @@ public class MybatisController {
 			
 		MybatisDao dao = sqlSession.getMapper(MybatisDao.class);
 		
+		dao.uphitDao(request.getParameter("fbnum")); // 조회수 증가 함수 호출
+		
 		model.addAttribute("fboardDto", dao.contentDao(request.getParameter("fbnum")));
 		
 		return "content_view";
